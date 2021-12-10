@@ -62,7 +62,8 @@ impl Default for Client {
         connector.set_keepalive(Some(TCP_KEEPALIVE));
 
         let client = hyper::Client::builder()
-            .pool_idle_timeout(POOL_IDLE_TIMEOUT)
+            //.pool_idle_timeout(POOL_IDLE_TIMEOUT)
+            .pool_max_idle_per_host(0)
             .build(connector);
 
         Self {
