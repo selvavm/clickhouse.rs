@@ -39,6 +39,7 @@ impl_num!(i64, 20);
 impl_num!(u64, 20);
 impl_num!(i128, 40);
 impl_num!(u128, 39);
+impl_num!((u32, u32), 2 * 10);
 
 impl Sealed for &str {}
 
