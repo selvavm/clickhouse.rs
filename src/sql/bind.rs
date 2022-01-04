@@ -23,7 +23,7 @@ macro_rules! impl_num {
 
             #[inline]
             fn write(&self, mut dst: impl fmt::Write) -> fmt::Result {
-                write!(dst, "{}", self)
+                write!(dst, "{:?}", self)
             }
         }
     };
