@@ -29,6 +29,24 @@ macro_rules! impl_num {
     };
 }
 
+macro_rules! impl_selva {
+    ($ty:ty, $reserve:literal) => {
+        impl Sealed for $ty {}
+
+        impl Bind for $ty {
+            #[inline]
+            fn reserve(&self) -> usize {
+                self.0.len() + $reserve
+            }
+
+            #[inline]
+            fn write(&self, mut dst: impl fmt::Write) -> fmt::Result {
+                write!(dst, "{:?}", self)
+            }
+        }
+    };
+}
+
 impl_num!(i8, 4);
 impl_num!(u8, 3);
 impl_num!(i16, 6);
@@ -40,6 +58,7 @@ impl_num!(u64, 20);
 impl_num!(i128, 40);
 impl_num!(u128, 39);
 impl_num!((u32, u32), 20);
+impl_selva!((String, u32), 10);
 
 impl Sealed for &str {}
 
