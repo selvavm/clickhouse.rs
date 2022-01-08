@@ -41,8 +41,8 @@ macro_rules! impl_selva {
 
             #[inline]
             fn write(&self, mut dst: impl fmt::Write) -> fmt::Result {
-                let a = format!('{:?}', self);
-                escape::string(a, dst)
+                let a = format!("{:?}", self);
+                escape::string(&a, dst)
             }
         }
     };
